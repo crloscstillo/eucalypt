@@ -1,0 +1,25 @@
+// -----------------------------------------------------------------------
+//  Tools >> Respond
+// -----------------------------------------------------------------------
+
+// Breakpoints
+// -----------------------------------------------------------------------
+$bp-small: 22em;
+$bp-medium: 42em;
+$bp-large: 51em;
+$bp-xxl: 67em;
+
+
+// Fast media queries
+// ----------------------------------------------------------------------
+@mixin respond-below($breakpoint) {
+  @media only screen and (max-width: $breakpoint) { @content; }
+}
+
+@mixin respond-above($breakpoint) {
+  @media only screen and (min-width: $breakpoint) { @content; }
+}
+
+@mixin respond-between($breakpoint-low, $breakpoint-high) {
+  @media only screen and (min-width: $breakpoint-low) and (max-width: $breakpoint-high) { @content; }
+}

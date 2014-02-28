@@ -1,0 +1,39 @@
+// -----------------------------------------------------------------------
+//  Seeds >> Base
+// -----------------------------------------------------------------------
+
+// Prevent iOS text size adjust after orientation change,
+// without disabling user zoom.
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  @extend %clearfix;
+  margin: 0; // Remove default margin
+  padding: 0;
+  padding-bottom: 2em;
+}
+
+// Correct 'block' display not defined in IE 8/9
+article, aside,
+details, figcaption,
+figure, footer,
+header, hgroup,
+main, nav,
+section, summary {
+  display: block;
+}
+
+// Address `[hidden]` styling not present in IE 8/9.
+// Hide the `template` element in IE, Safari, and Firefox < 22.
+[hidden],
+template {
+  display: none;
+}
+
+script {
+  display: none !important;
+}

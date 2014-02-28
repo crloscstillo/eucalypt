@@ -1,0 +1,113 @@
+// -----------------------------------------------------------------------
+//  Seeds >> Typography
+// -----------------------------------------------------------------------
+
+// Font-stacks & sizes
+// -----------------------------------------------------------------------
+$font-1: "soleil", Helvetica, Arial, sans-serif;
+$font-2: "proxima-nova", Helvetica, Arial, sans-serif;
+
+// Modular scale: 20px @ 1:1.25 (Major third) [http://modularscale.com]
+$base-fontsize: 30px;
+$base-lineheight: 45px;
+
+%xxl     { @include text-size(205.606px, 225px); }
+%huge    { @include text-size(127.074px, 135px); }
+%large   { @include text-size(78.538px, 90px); }
+%big     { @include text-size(48.54px, 60px); }
+%regular { @include text-size(30px, 45px); }
+%small   { @include text-size(18.541px, 45px); }
+%tiny    { @include text-size(11.459px, 22.5px); }
+
+
+// Block-level elements
+// -----------------------------------------------------------------------
+
+body {
+  font-size: $base-fontsize;
+  font-family: $font-1;
+  line-height: 1.5em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Headings
+h1, h2, h3,
+h4, h5, h6 {
+  font-family: $font-1;
+  margin: 0;
+  padding: 0;
+}
+
+h1 { @extend %xxl; }
+h2 { @extend %huge; }
+h3 { @extend %large; }
+h4 { @extend %big; }
+h5 { @extend %regular; }
+h6 { @extend %regular; }
+
+// Paragraphs
+p {
+  @extend %regular;
+  font-family: $font-2;
+  margin: 0;
+}
+
+// Thematic break
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+// Blockquotes
+blockquote {}
+blockquote small:before { content: '\00A0 \2014'; }
+blockquote small:after  { content: ''; }
+blockquote cite         { font-style: normal; }
+
+
+// Inline elements
+// -----------------------------------------------------------------------
+
+a {
+  background: transparent;
+  text-decoration: none;
+
+  &:focus {
+    outline: thin dotted;
+  }
+
+  &:active,
+  &:hover {
+    outline: 0;
+  }
+}
+
+h1 a, h2 a, h3 a,
+h4 a, h5 a, h6 a {}
+
+abbr      { border-bottom: 1px dotted gray; cursor: help; }  // Abbreviation
+em        { font-style: italic; }            // Emphasis
+strong    { font-weight: bold; }             // Strong importance
+b         { font-weight: bold; }             // Stylistically different from normal text with no special importance.
+
+::-moz-selection,
+::selection { color: #fff; background: #111; text-shadow: none; } // Selected text
+
+del       { text-decoration: line-through; } // Deleted text
+ins       { text-decoration: underline; }    // Inserted text
+s, strike { text-decoration: line-through; } // Text with strikethrough
+
+mark      { background: yellow; font-weight: bold; } // Highlighted
+dfn       { font-style: italic; }                    // Definition
+
+sup, sub  {font-size: 75%; line-height: 0; position: relative; vertical-align: baseline;}
+sup       { top: -0.5em; }                    // Superscript
+sub       { bottom: -0.25em; }                // Subscript
+
+q         { quotes: "\201C" "\201D" "\2018" "\2019"; } // Inline quote
+
+code, kbd,
+pre, samp { font-family: monospace, serif; font-size: 1em; } // Inline Code, Keyboard shortcut, preformatted and sample text
+pre       { white-space: pre-wrap; }

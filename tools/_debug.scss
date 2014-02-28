@@ -1,0 +1,65 @@
+// -----------------------------------------------------------------------
+//  Tools >> Debug
+// -----------------------------------------------------------------------
+// As seen on inuit.scss
+// Read more at http://inuitcss.com
+
+// Enable this stylesheet to visually detect any improperly nested or
+// potentially invalid markup, or any potentially inaccessible code.
+//
+// Red          ==      definite error
+// Yellow       ==      double-check
+// None         ==      should be fine
+//
+// Please note that this method of checking markup quality should not be relied
+// upon entirely. Validate your markup!
+
+// Are there any empty elements in your page?
+:empty { outline: 2px solid yellow !important; }
+
+// Images require `alt` attributes, empty `alt`s are fine but should be
+// double-checked, no `alt` is bad and is flagged red.
+img         { outline: 2px solid red !important; }
+img[alt]    { outline: none !important; }
+img[alt=""] { outline: 2px solid yellow !important; }
+
+// Links sometimes, though not always, benefit from `title` attributes. Links
+// without are never invalid but it’s a good idea to check.
+a        { outline: 2px solid yellow !important; }
+a[title] { outline: none !important; }
+
+// Double-check any links whose `href` is something questionable.
+a[href="#"],
+a[href*="javascript"] { outline:2px solid yellow !important; }
+
+// Ensure any lists only contain `li`s as children.
+ul > *:not(li),
+ol > *:not(li) { outline:2px solid red !important; }
+
+// It’s always nice to give `th`s `scope` attributes.
+th        { outline: 2px solid yellow !important; }
+th[scope] { outline: none !important; }
+
+// `tr`s as direct children of `table`s ain’t great, did you need a `thead`/`tbody`?
+table > tr { outline: 2px solid yellow !important; }
+
+// Forms require `action` attributes
+form         { outline: 2px solid red !important; }
+form[action] { outline: none !important; }
+
+// Various form-field types have required attributes. `input`s need `type`
+// attributes, `textarea`s need `rows` and `cols` attributes and submit buttons
+// need a `value` attribute.
+textarea, input      { outline: 2px solid red !important; }
+
+input[type]          { outline: none !important; }
+textarea[rows][cols] { outline: none !important; }
+
+input[type=submit]        { outline: 2px solid red !important; }
+input[type=submit][value] { outline:none !important; }
+
+// Avoid inline styles where possible.
+[style] { outline: 2px solid yellow !important; }
+
+// You should avoid using IDs for CSS, is this doing any styling?
+[id] { outline: 2px solid yellow !important; }

@@ -1,0 +1,59 @@
+// -----------------------------------------------------------------------
+//  Tools >> Typeplate
+// -----------------------------------------------------------------------
+
+// Context calculator
+@function em($target, $context: $base-fontsize) {
+  @return ($target/$context)#{em};
+}
+
+// Calculate font-size in em values
+@mixin font-size($size) {
+  font-size: em($size);
+}
+
+// Calculate relative size of line-height based on the font-size given
+@mixin line-height($lh: $base-lineheight, $fs: $base-fontsize) {
+  line-height: ($lh/$fs)#{em};
+}
+
+// -----------------------------------------------------------------------
+
+// Include all font-size calculation.
+// This is a combination of the 'line-height' and 'font-size' mixins.
+@mixin text-size($fs: $base-fontsize, $lh: $base-lineheight) {
+  @include font-size($fs);
+  @include line-height($lh, $fs);
+}
+
+// -----------------------------------------------------------------------
+
+// We make the decisions of font-sizes manually.
+// That way we have a better grasp of what's going on.
+//  1. Go to http://www.gridlover.net to choose your webtype.
+//  2. Then use the text-size() mixin inside the '_typography.scss' file
+
+
+// -----------------------------------------------------------------
+// Mixins
+// -----------------------------------------------------------------
+
+// HYPHENS
+//http://trentwalton.com/2011/09/07/css-hyphenation
+@mixin css-hyphens($val) {
+  // Accepted values: [ none | manual | auto ]
+  -webkit-hyphens: $val;  // Safari 5.1 thru 6, iOS 4.2 thru 6
+  -moz-hyphens: $val;   // Firefox 16 thru 20
+  -ms-hyphens: $val;    // IE10
+  hyphens: $val;      // W3C standard
+};
+
+// BREAKWORD
+// Silent Sass Classes - A.K.A Placeholders
+//
+// normal: Indicates that lines may only break at normal word break points.
+// break-word : Indicates that normally unbreakable words may be broken at
+// arbitrary points if there are no otherwise acceptable break points in the line.
+%breakword      { word-wrap: breakword; }
+%normal-wrap    { word-wrap: normal; }
+%inherit-wrap   { word-wrap: auto; }

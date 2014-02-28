@@ -1,0 +1,65 @@
+// -----------------------------------------------------------------------
+//  Tools >> Gridditor
+// -----------------------------------------------------------------------
+
+// Configuration
+// -----------------------------------------------------------------------
+$column-width: 60px;
+$gutter-width: 20px;
+$columns: 12;
+
+
+// Functions
+// -----------------------------------------------------------------------
+
+@function grid-width($columns: $columns) {
+  @return ($column-width * $columns) + ($gutter-width * ($columns - 1));
+}
+
+@function column-width($x, $columns: $columns) {
+  @return $grid-width * ((($column-width + $gutter-width) * $x) - $gutter-width) / grid-width();
+}
+
+@function gutter-width($columns: $columns) {
+  @return $grid-width * (($gutter-width)/grid-width());
+}
+
+// -----------------------------------------------------------------------
+$grid-width: grid-width($columns); // Set this to 100% for a fluid layout
+// -----------------------------------------------------------------------
+
+
+// Mixins
+// -----------------------------------------------------------------------
+@mixin grid() {
+  @extend %clearfix; 
+
+  display: block;
+  width: $grid-width;
+  height: auto;
+  margin: 0 auto;
+}
+
+@mixin column($x, $float: left) {
+  @extend %border-box;
+
+  float: $float;
+  display: block;
+  min-height: 1px;
+  width: column-width($x);
+  margin: 0 0 0 gutter-width();
+}
+
+@mixin offset($offset: 1, $first: false) {
+  @if $first == true {
+    margin-left: $grid-width * (($gutter-width + $column-width) * $offset) / grid-width();
+  } @else {
+    margin-left: $grid-width * (($gutter-width + $column-width) * $offset) / grid-width() + gutter-width();
+  }
+}
+
+
+// -----------------------------------------------------------------------
+// An example of how to use the grid is found in
+// the 'plants/_grid.scss' file.
+// -----------------------------------------------------------------------

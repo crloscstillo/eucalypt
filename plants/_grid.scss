@@ -1,0 +1,42 @@
+// -----------------------------------------------------------------------
+//  Plants >> Grid
+// -----------------------------------------------------------------------
+
+// Configuration (overrides variables grom 'tools/_gridditor.scss')
+// -----------------------------------------------------------------------
+$column-width: 60px;
+$gutter-width: 20px;
+$columns: 12;
+$grid-width: grid-width($columns); // Set this to 100% for a fluid layout
+
+
+// Grid classes
+// -----------------------------------------------------------------------
+
+.grid {
+  @include grid();
+}
+
+@for $i from 1 to $columns {
+  .column-#{$i} { @include column($i); }
+}
+
+@for $i from 1 to $columns {
+  .offset-#{$i}        { @include offset($i); }
+  .offset--first-#{$i} { @include offset($i, true); }
+}
+
+.column--first {
+  margin-left: 0;
+}
+
+// Debug your grid
+.grid--debug {
+  background: #eee;
+  border: 1px dotted #444;
+}
+
+.grid--debug [class*="column-"] {
+  background: white;
+  height: 200px;
+}

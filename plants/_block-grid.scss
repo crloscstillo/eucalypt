@@ -1,0 +1,18 @@
+// -----------------------------------------------------------------------
+//  Plans >> Block Grid
+// -----------------------------------------------------------------------
+
+.blocks                   { display: block; }
+.block                    { display: block; height: auto; float: left; }
+ 
+.blocks.two-up            { margin-left: -4% }
+.blocks.two-up .block     { margin-left: 4%; width: 46%; }
+  
+.blocks.three-up          { margin-left: -2% }
+.blocks.three-up .block   { margin-left: 2%; width: 31.3%; }
+  
+.blocks.four-up           { margin-left: -2% }
+.blocks.four-up .block    { margin-left: 2%; width: 23%; }
+  
+.blocks.five-up           { margin-left: -1.5% }
+.blocks.five-up .block    { margin-left: 1.5%; width: 18.5%; }
